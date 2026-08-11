@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Brand colors */
+  --color-primary: #f05a28;
+  --color-primary-dark: #d6491d;
+  --color-primary-light: #ff7a4d;
+  --color-secondary: #1f1f1f;
+  --color-background: #ffffff;
+  --color-accent: #fff5f2;
+  --color-text: #1f2937;
+  --color-muted: #6b7280;
+
+  /* Typography */
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Radius */
+  --radius-brand: 16px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 24px rgba(31, 31, 31, 0.06);
+  --shadow-card: 0 8px 32px rgba(240, 90, 40, 0.08);
+
+  /* Breakpoints (Tailwind defaults already cover 320/768/1440, kept explicit for clarity) */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-accent);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-secondary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
