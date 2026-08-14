@@ -9,7 +9,7 @@ import { SITE } from '@/constants/site';
 export function usePageMeta(title: string, description?: string): void {
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = `${title} | ${SITE.name}`;
+    document.title = `${title} | ${SITE.fullName}`;
 
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const previousDescription = meta?.getAttribute('content') ?? undefined;

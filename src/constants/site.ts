@@ -1,5 +1,7 @@
 export const SITE = {
   name: 'Jobveda',
+  fullName: 'Jobveda Training and Placement Services',
+  subtitle: 'Training & Placement Services',
   tagline: 'Your Future. Our Guidance.',
   description:
     'Connecting talented professionals with trusted employers and helping businesses find the right talent.',
