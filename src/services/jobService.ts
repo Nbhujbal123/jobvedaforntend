@@ -19,7 +19,7 @@ export interface JobListParams {
 }
 
 export async function fetchJobs(params: JobListParams = {}): Promise<PaginatedResponse<Job>> {
-  const { data } = await api.get<PaginatedResponse<Job>>('/jobs', { params });
+  const { data } = await api.get<PaginatedResponse<Job>>('/api/jobs', { params });
   console.log("Data: ", data);
   return data;
 }
