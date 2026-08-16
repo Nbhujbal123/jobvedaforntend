@@ -65,9 +65,7 @@ export function JobsPage() {
     queryFn: () => fetchJobs(queryParams),
   });
 
-  console.log("jobs data" , data);
   const updateParam = (key: string, value: string) => {
-
     const next = new URLSearchParams(searchParams);
     if (value) next.set(key, value);
     else next.delete(key);
