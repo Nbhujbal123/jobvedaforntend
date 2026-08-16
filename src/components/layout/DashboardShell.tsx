@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { LogOut, type LucideIcon } from 'lucide-react';
+import { LogOut, Menu, X, type LucideIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Logo } from '@/components/common/Logo';
 import { Container } from '@/components/common/Container';
@@ -56,11 +57,34 @@ function UserMenu({ layout = 'row' }: { layout?: 'row' | 'stacked' }) {
 }
 
 export function DashboardShell({ navItems, roleLabel }: DashboardShellProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-accent/30">
-      <aside className="hidden h-screen w-64 shrink-0 flex-col border-r border-secondary/10 bg-white lg:flex">
-        <div className="flex h-18 shrink-0 items-center px-6">
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-secondary/50 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      <aside
+        className={cn(
+          'fixed inset-y-0 left-0 z-50 flex h-screen w-64 shrink-0 flex-col border-r border-secondary/10 bg-white transition-transform duration-200 ease-out lg:static lg:z-auto lg:translate-x-0',
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+        )}
+      >
+        <div className="flex h-18 shrink-0 items-center justify-between px-6">
           <Logo />
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-xl p-2 text-secondary lg:hidden"
+            aria-label="Close sidebar"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <X size={22} aria-hidden="true" />
+          </button>
         </div>
         <span className="shrink-0 px-6 pb-3 text-xs font-semibold uppercase tracking-wide text-muted">
           {roleLabel} Panel
@@ -70,6 +94,7 @@ export function DashboardShell({ navItems, roleLabel }: DashboardShellProps) {
             <NavLink
               key={item.path}
               to={item.path}
+              onClick={() => setIsSidebarOpen(false)}
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-secondary/70 hover:bg-accent hover:text-primary',
@@ -90,7 +115,18 @@ export function DashboardShell({ navItems, roleLabel }: DashboardShellProps) {
       <div className="flex h-screen flex-1 flex-col overflow-hidden">
         <header className="flex h-18 shrink-0 items-center border-b border-secondary/10 bg-white lg:hidden">
           <Container className="flex items-center justify-between">
-            <Logo />
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-xl p-2 text-secondary"
+                aria-label="Open sidebar"
+                aria-expanded={isSidebarOpen}
+                onClick={() => setIsSidebarOpen(true)}
+              >
+                <Menu size={22} aria-hidden="true" />
+              </button>
+              <Logo />
+            </div>
             <div className="flex items-center gap-3">
               <NotificationBell />
               <UserMenu />
