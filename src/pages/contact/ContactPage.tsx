@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/Button';
 import { submitContactMessage } from '@/services/contactService';
 import { getErrorMessage } from '@/utils/getErrorMessage';
 import { SITE } from '@/constants/site';
+import { getWhatsAppContactUrl } from '@/utils/whatsapp';
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, 'Name is too short').max(100),
@@ -36,8 +37,9 @@ export function ContactPage() {
 
   const mutation = useMutation({
     mutationFn: submitContactMessage,
-    onSuccess: () => {
-      toast.success('Thanks for reaching out! We will get back to you shortly.');
+    onSuccess: (_data, values) => {
+      toast.success('Thanks for reaching out! Opening WhatsApp to send us your message…');
+      window.open(getWhatsAppContactUrl(values), '_blank', 'noopener,noreferrer');
       reset();
     },
     onError: (error) => toast.error(getErrorMessage(error, 'Could not send your message')),
@@ -58,21 +60,25 @@ export function ContactPage() {
               <Phone size={20} className="text-primary" aria-hidden="true" />
               <div>
                 <p className="text-sm font-semibold text-secondary">Call Us</p>
-                <p className="text-sm text-muted">{SITE.contact.phone}</p>
+                <a href={`tel:${SITE.contact.phone}`} className="text-sm text-muted hover:text-primary">
+                  {SITE.contact.phone}
+                </a>
               </div>
             </Card>
             <Card className="flex items-center gap-3">
               <Mail size={20} className="text-primary" aria-hidden="true" />
               <div>
                 <p className="text-sm font-semibold text-secondary">Email Us</p>
-                <p className="text-sm text-muted">hello@jobveda.com</p>
+                <a href={`mailto:${SITE.contact.email}`} className="text-sm text-muted hover:text-primary">
+                  {SITE.contact.email}
+                </a>
               </div>
             </Card>
             <Card className="flex items-center gap-3">
               <MapPin size={20} className="text-primary" aria-hidden="true" />
               <div>
                 <p className="text-sm font-semibold text-secondary">Visit Us</p>
-                <p className="text-sm text-muted">Pune, Maharashtra, India</p>
+                <p className="text-sm text-muted">{SITE.contact.location}</p>
               </div>
             </Card>
           </div>

@@ -7,8 +7,9 @@ export const SITE = {
     'Connecting talented professionals with trusted employers and helping businesses find the right talent.',
   contact: {
     phone: '+91 98239 18472',
-    email: 'info@jobveda.com',
-    location: 'India',
+    whatsapp: '919823918472',
+    email: 'rishi@jobveda.in',
+    location: 'Wasem Arcade 3rd Floor Tukdoji Square, Manewada Road Nagpur.',
   },
   socials: {
     facebook: '#',
