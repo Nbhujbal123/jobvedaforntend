@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" role="img" aria-label="">
+  <defs>
+    <linearGradient id="contactBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff9f6" />
+      <stop offset="100%" stop-color="#fff2ec" />
+    </linearGradient>
+    <radialGradient id="contactBlob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f05a28" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#f05a28" stop-opacity="0" />
+    </radialGradient>
+    <filter id="contactBlur"><feGaussianBlur stdDeviation="45" /></filter>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#contactBase)" />
+  <circle cx="1300" cy="180" r="280" fill="url(#contactBlob)" filter="url(#contactBlur)" />
+  <circle cx="260" cy="560" r="240" fill="url(#contactBlob)" filter="url(#contactBlur)" />
+
+  <!-- faint map grid -->
+  <g stroke="#1f1f1f" stroke-opacity="0.045" stroke-width="1">
+    <path d="M0 100 H1600 M0 220 H1600 M0 340 H1600 M0 460 H1600 M0 580 H1600" />
+    <path d="M160 0 V700 M400 0 V700 M700 0 V700 M1000 0 V700 M1300 0 V700 M1500 0 V700" />
+  </g>
+
+  <!-- location pin -->
+  <g transform="translate(800,300)">
+    <path d="M0 -70 C 50 -70 85 -35 85 5 C 85 55 30 110 0 140 C -30 110 -85 55 -85 5 C -85 -35 -50 -70 0 -70 Z"
+          fill="#f05a28" fill-opacity="0.14" />
+    <circle cx="0" cy="0" r="30" fill="#f05a28" fill-opacity="0.25" />
+  </g>
+</svg>

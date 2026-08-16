@@ -6,11 +6,13 @@ import { Container } from '@/components/common/Container';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 import { Pagination } from '@/components/common/Pagination';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { Select } from '@/components/ui/Select';
 import { CourseCard } from '@/components/training/CourseCard';
 import { fetchCourses } from '@/services/courseService';
 import { JOB_CATEGORY_OPTIONS } from '@/constants/jobOptions';
 import { ROUTES } from '@/constants/routes';
+import { backgroundImages } from '@/constants/images';
 
 export function TrainingPage() {
   const [category, setCategory] = useState('');
@@ -22,7 +24,7 @@ export function TrainingPage() {
   });
 
   return (
-    <section className="bg-accent/20 py-12 md:py-16">
+    <SectionBackground image={backgroundImages.training} overlay="subtle" className="py-12 md:py-16">
       <Container className="flex flex-col gap-10">
         <SectionHeading
           align="left"
@@ -74,6 +76,6 @@ export function TrainingPage() {
           </>
         )}
       </Container>
-    </section>
+    </SectionBackground>
   );
 }

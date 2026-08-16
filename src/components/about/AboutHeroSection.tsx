@@ -4,12 +4,18 @@ import { Container } from '@/components/common/Container';
 import { Breadcrumb } from '@/components/common/Breadcrumb';
 import { Reveal } from '@/components/common/Reveal';
 import { HeroVisualCard } from '@/components/common/HeroVisualCard';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { ROUTES } from '@/constants/routes';
+import { backgroundImages } from '@/constants/images';
 
 export function AboutHeroSection() {
   return (
-    <section className="relative overflow-hidden bg-accent/50 pt-10 pb-20 md:pt-14 md:pb-24">
+    <SectionBackground
+      image={backgroundImages.about}
+      overlay="subtle"
+      className="overflow-hidden pt-10 pb-20 md:pt-14 md:pb-24"
+    >
       <Container className="flex flex-col gap-8">
         <Breadcrumb items={[{ label: 'About' }]} />
 
@@ -49,6 +55,6 @@ export function AboutHeroSection() {
           </Reveal>
         </div>
       </Container>
-    </section>
+    </SectionBackground>
   );
 }

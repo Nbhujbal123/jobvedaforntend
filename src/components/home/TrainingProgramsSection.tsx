@@ -3,14 +3,16 @@ import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { Reveal } from '@/components/common/Reveal';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { CourseCard } from '@/components/training/CourseCard';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { TRAINING_PROGRAMS } from '@/constants/homeData';
 import { ROUTES } from '@/constants/routes';
+import { backgroundImages } from '@/constants/images';
 
 export function TrainingProgramsSection() {
   return (
-    <section className="bg-accent/40 py-16 md:py-24">
+    <SectionBackground image={backgroundImages.training} overlay="subtle" className="py-16 md:py-24">
       <Container className="flex flex-col gap-12">
         <Reveal>
           <SectionHeading
@@ -35,6 +37,6 @@ export function TrainingProgramsSection() {
           </Link>
         </Reveal>
       </Container>
-    </section>
+    </SectionBackground>
   );
 }

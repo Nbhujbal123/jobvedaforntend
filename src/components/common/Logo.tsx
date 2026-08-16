@@ -1,20 +1,28 @@
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 import { SITE } from '@/constants/site';
+import logoImage from '@/assets/logos/logo.png';
 
 /**
- * Temporary text wordmark — no Jobveda logo file exists in the project yet.
- * Swap for <img src={logo} alt={SITE.fullName} /> once the real logo asset is provided.
+ * Shared brand mark — logo image (rasterized from the client-supplied
+ * Jobveda badge artwork) with the "Training & Placement Services" tagline
+ * stacked underneath. Used in the header, dashboard sidebars, and footer so
+ * the lockup only needs to be tuned responsively in one place.
  */
 export function Logo() {
   return (
-    <Link to={ROUTES.HOME} className="flex items-center gap-2" aria-label={`${SITE.fullName} home`}>
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-base font-bold text-white">
-        J
-      </span>
-      <span className="flex flex-col leading-tight">
-        <span className="text-xl font-bold text-secondary">{SITE.name}</span>
-        <span className="hidden text-[11px] font-medium text-muted sm:block">{SITE.subtitle}</span>
+    <Link
+      to={ROUTES.HOME}
+      className="flex w-fit min-w-0 shrink-0 flex-col items-center gap-0.5"
+      aria-label={`${SITE.fullName} home`}
+    >
+      <img
+        src={logoImage}
+        alt={SITE.fullName}
+        className="h-9 w-auto shrink-0 object-contain sm:h-10 md:h-11"
+      />
+      <span className="max-w-full truncate text-[9px] font-semibold uppercase tracking-wide text-muted sm:text-[10px] md:text-[11px]">
+        {SITE.subtitle}
       </span>
     </Link>
   );

@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
@@ -13,6 +14,7 @@ import { submitContactMessage } from '@/services/contactService';
 import { getErrorMessage } from '@/utils/getErrorMessage';
 import { SITE } from '@/constants/site';
 import { getWhatsAppContactUrl } from '@/utils/whatsapp';
+import { backgroundImages } from '@/constants/images';
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, 'Name is too short').max(100),
@@ -46,7 +48,7 @@ export function ContactPage() {
   });
 
   return (
-    <section className="bg-accent/20 py-12 md:py-16">
+    <SectionBackground image={backgroundImages.contact} overlay="subtle" className="py-12 md:py-16">
       <Container className="flex flex-col gap-10">
         <SectionHeading
           eyebrow="Get In Touch"
@@ -125,6 +127,6 @@ export function ContactPage() {
           </Card>
         </div>
       </Container>
-    </section>
+    </SectionBackground>
   );
 }

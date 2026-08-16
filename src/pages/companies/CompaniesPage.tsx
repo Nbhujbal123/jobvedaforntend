@@ -10,6 +10,7 @@ import { HeroVisualCard } from '@/components/common/HeroVisualCard';
 import { Reveal } from '@/components/common/Reveal';
 import { EmptyState } from '@/components/common/EmptyState';
 import { Pagination } from '@/components/common/Pagination';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -18,6 +19,7 @@ import { CompanyCardSkeletonGrid } from '@/components/companies/CompanyCardSkele
 import { fetchCompanies } from '@/services/companyService';
 import { COMPANY_SIZE_OPTIONS, INDUSTRIES } from '@/constants/companyOptions';
 import { ROUTES } from '@/constants/routes';
+import { backgroundImages } from '@/constants/images';
 import { usePageMeta } from '@/hooks/usePageMeta';
 
 export function CompaniesPage() {
@@ -81,7 +83,11 @@ export function CompaniesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-accent/50 pt-10 pb-20 md:pt-14 md:pb-24">
+      <SectionBackground
+        image={backgroundImages.companies}
+        overlay="subtle"
+        className="overflow-hidden pt-10 pb-20 md:pt-14 md:pb-24"
+      >
         <Container className="flex flex-col gap-8">
           <Breadcrumb items={[{ label: 'Companies' }]} />
 
@@ -109,7 +115,7 @@ export function CompaniesPage() {
             </Reveal>
           </div>
         </Container>
-      </section>
+      </SectionBackground>
 
       {/* Search + Filters */}
       <section className="bg-background py-12 md:py-16">
@@ -265,20 +271,27 @@ export function CompaniesPage() {
       {/* CTA */}
       <section className="bg-background py-16 md:py-20">
         <Container>
-          <Reveal className="flex flex-col items-center gap-6 rounded-[16px] bg-primary px-6 py-14 text-center text-white sm:px-16">
-            <h2 className="max-w-xl text-3xl font-bold md:text-4xl">
-              Looking for your next career opportunity?
-            </h2>
-            <p className="max-w-lg text-white/85">
-              Browse thousands of open roles from the companies listed here.
-            </p>
-            <Link
-              to={ROUTES.JOBS}
-              className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-white px-8 text-base font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
+          <Reveal>
+            <SectionBackground
+              image={backgroundImages.cta}
+              overlay="brand"
+              className="overflow-hidden rounded-[16px]"
+              contentClassName="flex flex-col items-center gap-6 px-6 py-14 text-center text-white sm:px-16"
             >
-              Explore Jobs
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+              <h2 className="max-w-xl text-3xl font-bold md:text-4xl">
+                Looking for your next career opportunity?
+              </h2>
+              <p className="max-w-lg text-white/85">
+                Browse thousands of open roles from the companies listed here.
+              </p>
+              <Link
+                to={ROUTES.JOBS}
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-white px-8 text-base font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
+              >
+                Explore Jobs
+                <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            </SectionBackground>
           </Reveal>
         </Container>
       </section>

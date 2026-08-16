@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="">
+  <defs>
+    <linearGradient id="trainingBase" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff2ec" />
+      <stop offset="100%" stop-color="#fff9f6" />
+    </linearGradient>
+    <radialGradient id="trainingBlob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7a4d" stop-opacity="0.20" />
+      <stop offset="100%" stop-color="#ff7a4d" stop-opacity="0" />
+    </radialGradient>
+    <filter id="trainingBlur"><feGaussianBlur stdDeviation="50" /></filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#trainingBase)" />
+  <circle cx="220" cy="160" r="300" fill="url(#trainingBlob)" filter="url(#trainingBlur)" />
+  <circle cx="1420" cy="760" r="320" fill="url(#trainingBlob)" filter="url(#trainingBlur)" />
+
+  <!-- abstract upward growth bars, evoking career progression -->
+  <g fill="#f05a28" fill-opacity="0.10">
+    <rect x="1120" y="640" width="70" height="180" rx="8" />
+    <rect x="1210" y="560" width="70" height="260" rx="8" />
+    <rect x="1300" y="460" width="70" height="360" rx="8" />
+    <rect x="1390" y="360" width="70" height="460" rx="8" />
+  </g>
+  <path d="M1120 660 L1245 580 L1335 480 L1425 380" stroke="#f05a28" stroke-opacity="0.30" stroke-width="4" fill="none" stroke-linecap="round" />
+  <circle cx="1425" cy="380" r="9" fill="#f05a28" fill-opacity="0.35" />
+
+  <!-- open-book abstraction -->
+  <g stroke="#1f1f1f" stroke-opacity="0.08" stroke-width="3" fill="none">
+    <path d="M140 620 C 220 590 300 590 380 620 L380 760 C300 730 220 730 140 760 Z" />
+    <path d="M620 620 C 540 590 460 590 380 620 L380 760 C460 730 540 730 620 760 Z" />
+  </g>
+</svg>

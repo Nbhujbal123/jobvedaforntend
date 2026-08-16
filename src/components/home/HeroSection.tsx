@@ -3,15 +3,21 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Briefcase, TrendingUp, UploadCloud, Users } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { Reveal } from '@/components/common/Reveal';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { ROUTES } from '@/constants/routes';
 import { SITE } from '@/constants/site';
+import { backgroundImages } from '@/constants/images';
 
 export function HeroSection() {
   const [firstLine, secondLine] = SITE.tagline.split('. ');
 
   return (
-    <section className="relative overflow-hidden bg-accent/50 pt-14 pb-24 md:pt-20 md:pb-28">
+    <SectionBackground
+      image={backgroundImages.hero}
+      overlay="subtle"
+      className="overflow-hidden pt-14 pb-24 md:pt-20 md:pb-28"
+    >
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-primary shadow-[var(--shadow-soft)]">
@@ -85,6 +91,6 @@ export function HeroSection() {
           </div>
         </Reveal>
       </Container>
-    </section>
+    </SectionBackground>
   );
 }

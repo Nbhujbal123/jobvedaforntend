@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="">
+  <defs>
+    <linearGradient id="aboutBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffaf8" />
+      <stop offset="100%" stop-color="#fff2ec" />
+    </linearGradient>
+    <radialGradient id="aboutBlob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f05a28" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#f05a28" stop-opacity="0" />
+    </radialGradient>
+    <filter id="aboutBlur"><feGaussianBlur stdDeviation="50" /></filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#aboutBase)" />
+  <circle cx="1320" cy="140" r="320" fill="url(#aboutBlob)" filter="url(#aboutBlur)" />
+  <circle cx="180" cy="780" r="280" fill="url(#aboutBlob)" filter="url(#aboutBlur)" />
+
+  <!-- abstract skyline / office silhouette, low opacity -->
+  <g fill="#1f1f1f" fill-opacity="0.05">
+    <rect x="120" y="560" width="90" height="340" rx="6" />
+    <rect x="230" y="480" width="90" height="420" rx="6" />
+    <rect x="340" y="600" width="90" height="300" rx="6" />
+    <rect x="1180" y="500" width="90" height="400" rx="6" />
+    <rect x="1290" y="440" width="90" height="460" rx="6" />
+    <rect x="1400" y="580" width="90" height="320" rx="6" />
+  </g>
+
+  <g fill="#f05a28" fill-opacity="0.16">
+    <rect x="145" y="600" width="14" height="14" rx="2" />
+    <rect x="175" y="600" width="14" height="14" rx="2" />
+    <rect x="145" y="640" width="14" height="14" rx="2" />
+    <rect x="175" y="640" width="14" height="14" rx="2" />
+    <rect x="255" y="520" width="14" height="14" rx="2" />
+    <rect x="285" y="520" width="14" height="14" rx="2" />
+    <rect x="255" y="560" width="14" height="14" rx="2" />
+    <rect x="285" y="560" width="14" height="14" rx="2" />
+    <rect x="1205" y="540" width="14" height="14" rx="2" />
+    <rect x="1235" y="540" width="14" height="14" rx="2" />
+    <rect x="1315" y="480" width="14" height="14" rx="2" />
+    <rect x="1345" y="480" width="14" height="14" rx="2" />
+  </g>
+</svg>

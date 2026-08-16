@@ -2,35 +2,44 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 import { Container } from '@/components/common/Container';
 import { Reveal } from '@/components/common/Reveal';
+import { SectionBackground } from '@/components/common/SectionBackground';
 import { ROUTES } from '@/constants/routes';
 import { SITE } from '@/constants/site';
+import { backgroundImages } from '@/constants/images';
 
 export function AboutCtaSection() {
   return (
     <section className="bg-background py-16 md:py-20">
       <Container className="flex flex-col gap-8">
-        <Reveal className="flex flex-col items-center gap-6 rounded-[16px] bg-primary px-6 py-14 text-center text-white sm:px-16">
-          <h2 className="max-w-xl text-3xl font-bold md:text-4xl">
-            Ready to take the next step in your career?
-          </h2>
-          <p className="max-w-lg text-white/85">
-            Explore opportunities, build your profile, and move closer to your career goals.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to={ROUTES.JOBS}
-              className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-white px-8 text-base font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
-            >
-              Find Jobs
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-            <Link
-              to={ROUTES.CONTACT}
-              className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl border border-white/40 px-8 text-base font-semibold text-white transition-colors duration-200 hover:border-white"
-            >
-              Contact Us
-            </Link>
-          </div>
+        <Reveal>
+          <SectionBackground
+            image={backgroundImages.cta}
+            overlay="brand"
+            className="overflow-hidden rounded-[16px]"
+            contentClassName="flex flex-col items-center gap-6 px-6 py-14 text-center text-white sm:px-16"
+          >
+            <h2 className="max-w-xl text-3xl font-bold md:text-4xl">
+              Ready to take the next step in your career?
+            </h2>
+            <p className="max-w-lg text-white/85">
+              Explore opportunities, build your profile, and move closer to your career goals.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to={ROUTES.JOBS}
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-white px-8 text-base font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
+              >
+                Find Jobs
+                <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <Link
+                to={ROUTES.CONTACT}
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl border border-white/40 px-8 text-base font-semibold text-white transition-colors duration-200 hover:border-white"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </SectionBackground>
         </Reveal>
 
         <Reveal delay={0.1} className="grid grid-cols-1 gap-4 rounded-[16px] border border-secondary/10 bg-white p-6 shadow-[var(--shadow-soft)] sm:grid-cols-3 sm:items-center">
