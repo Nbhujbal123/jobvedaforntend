@@ -32,7 +32,8 @@ export function NotificationBell() {
         type="button"
         onClick={handleOpen}
         aria-label="Notifications"
-        className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-secondary/15 text-secondary hover:border-primary hover:text-primary"
+        aria-expanded={isOpen}
+        className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-secondary/15 text-secondary hover:border-primary hover:text-primary"
       >
         <Bell size={18} aria-hidden="true" />
         {Boolean(data?.unreadCount) && (
@@ -50,7 +51,7 @@ export function NotificationBell() {
             className="fixed inset-0 z-40 cursor-default"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 z-50 mt-2 w-80 rounded-[16px] border border-secondary/10 bg-white p-3 shadow-[var(--shadow-card)]">
+          <div className="absolute right-0 z-50 mt-2 w-80 max-w-[calc(100vw-2.5rem)] rounded-[16px] border border-secondary/10 bg-white p-3 shadow-[var(--shadow-card)]">
             <div className="flex items-center justify-between px-1 pb-2">
               <span className="text-sm font-semibold text-secondary">Notifications</span>
               <button type="button" onClick={handleMarkAll} className="text-xs font-medium text-primary hover:underline">

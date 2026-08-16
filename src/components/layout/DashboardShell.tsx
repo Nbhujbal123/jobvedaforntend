@@ -20,7 +20,8 @@ interface DashboardShellProps {
   roleLabel: string;
 }
 
-function UserMenu({ layout = 'row' }: { layout?: 'row' | 'stacked' }) {
+/** Lives at the bottom of the sidebar (desktop: always-visible sidebar, mobile: drawer). */
+function UserMenu() {
   const { user } = useAuth();
   const logoutMutation = useLogout();
 
@@ -29,14 +30,9 @@ function UserMenu({ layout = 'row' }: { layout?: 'row' | 'stacked' }) {
   };
 
   return (
-    <div
-      className={cn(
-        'flex items-center gap-3',
-        layout === 'stacked' && 'flex-col items-stretch border-t border-secondary/10 p-3',
-      )}
-    >
+    <div className="flex flex-col items-stretch gap-3 border-t border-secondary/10 p-3">
       {user && (
-        <div className={cn('min-w-0', layout === 'row' && 'hidden sm:block')}>
+        <div className="min-w-0 px-1">
           <p className="truncate text-sm font-semibold text-secondary">
             {user.firstName} {user.lastName}
           </p>
@@ -47,7 +43,7 @@ function UserMenu({ layout = 'row' }: { layout?: 'row' | 'stacked' }) {
         type="button"
         onClick={handleLogout}
         disabled={logoutMutation.isPending}
-        className="inline-flex items-center justify-center gap-2 rounded-xl border border-secondary/15 px-3 py-2 text-sm font-medium text-secondary/80 hover:border-primary hover:text-primary disabled:opacity-50"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-secondary/15 px-3 py-2 text-sm font-medium text-secondary/80 hover:border-primary hover:text-primary disabled:opacity-50"
       >
         <LogOut size={16} aria-hidden="true" />
         {logoutMutation.isPending ? 'Logging out…' : 'Logout'}
@@ -70,16 +66,17 @@ export function DashboardShell({ navItems, roleLabel }: DashboardShellProps) {
       )}
 
       <aside
+        id="dashboard-sidebar"
         className={cn(
-          'fixed inset-y-0 left-0 z-50 flex h-screen w-64 shrink-0 flex-col border-r border-secondary/10 bg-white transition-transform duration-200 ease-out lg:static lg:z-auto lg:translate-x-0',
+          'fixed inset-y-0 left-0 z-50 flex h-screen w-64 max-w-[85vw] shrink-0 flex-col border-r border-secondary/10 bg-white transition-transform duration-200 ease-out lg:static lg:z-auto lg:max-w-none lg:translate-x-0',
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
-        <div className="flex h-18 shrink-0 items-center justify-between px-6">
+        <div className="flex h-18 shrink-0 items-center justify-between gap-2 px-4 sm:px-6">
           <Logo />
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-xl p-2 text-secondary lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-secondary hover:bg-accent lg:hidden"
             aria-label="Close sidebar"
             onClick={() => setIsSidebarOpen(false)}
           >
@@ -108,35 +105,37 @@ export function DashboardShell({ navItems, roleLabel }: DashboardShellProps) {
           ))}
         </nav>
         <div className="shrink-0">
-          <UserMenu layout="stacked" />
+          <UserMenu />
         </div>
       </aside>
 
-      <div className="flex h-screen flex-1 flex-col overflow-hidden">
+      <div className="flex h-screen min-w-0 flex-1 flex-col overflow-hidden">
         <header className="flex h-18 shrink-0 items-center border-b border-secondary/10 bg-white lg:hidden">
-          <Container className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <Container className="flex items-center justify-between gap-2">
+            <div className="flex min-w-0 items-center gap-1 sm:gap-3">
               <button
                 type="button"
-                className="inline-flex items-center justify-center rounded-xl p-2 text-secondary"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-secondary hover:bg-accent"
                 aria-label="Open sidebar"
                 aria-expanded={isSidebarOpen}
+                aria-controls="dashboard-sidebar"
                 onClick={() => setIsSidebarOpen(true)}
               >
                 <Menu size={22} aria-hidden="true" />
               </button>
-              <Logo />
+              <div className="min-w-0">
+                <Logo />
+              </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex shrink-0 items-center gap-2">
               <NotificationBell />
-              <UserMenu />
             </div>
           </Container>
         </header>
         <header className="hidden h-18 shrink-0 items-center justify-end gap-3 border-b border-secondary/10 bg-white px-6 lg:flex xl:px-10">
           <NotificationBell />
         </header>
-        <main className="flex-1 overflow-y-auto p-6 lg:p-10">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:p-10">
           <Outlet />
         </main>
       </div>
