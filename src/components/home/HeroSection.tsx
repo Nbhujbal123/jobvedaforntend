@@ -15,7 +15,7 @@ export function HeroSection() {
   return (
     <SectionBackground
       image={backgroundImages.hero}
-      overlay="subtle"
+      overlay="faint"
       className="overflow-hidden pt-14 pb-24 md:pt-20 md:pb-28"
     >
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">

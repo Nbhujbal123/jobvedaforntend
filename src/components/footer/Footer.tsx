@@ -38,7 +38,7 @@ export function Footer() {
     <footer className="border-t border-secondary/10 bg-secondary text-white/70">
       <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-5">
         <div className="flex flex-col gap-4 lg:col-span-1">
-          <Logo />
+          <Logo variant="light" />
           <p className="text-sm leading-relaxed">{SITE.description}</p>
           <div className="flex flex-col gap-2 text-sm">
             <span className="inline-flex items-center gap-2">

@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/utils/cn';
 
-type Overlay = 'subtle' | 'brand';
+type Overlay = 'subtle' | 'brand' | 'faint';
 
 interface SectionBackgroundProps extends HTMLAttributes<HTMLElement> {
   image: string;
@@ -17,6 +17,8 @@ const overlayClasses: Record<Overlay, string> = {
   subtle: 'bg-accent/75',
   // Strong brand-orange tint for CTA banners — pairs with the existing white CTA text.
   brand: 'bg-primary/88',
+  // Barely-there tint — lets the background artwork actually read, for hero-style sections with plenty of empty space.
+  faint: 'bg-accent/30',
 };
 
 /**
@@ -37,7 +39,7 @@ export function SectionBackground({
   return (
     <section
       className={cn('relative bg-cover bg-no-repeat', className)}
-      style={{ backgroundImage: `url(${image})`, backgroundPosition: position }}
+      style={{ backgroundImage: `url("${image}")`, backgroundPosition: position }}
       {...rest}
     >
       <div className={cn('absolute inset-0', overlayClasses[overlay])} aria-hidden="true" />
